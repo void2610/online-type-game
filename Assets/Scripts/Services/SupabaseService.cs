@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Void2610.Supabase;
 
 /// <summary>
 /// Supabaseとの通信を担当するサービス
 /// </summary>
 public class SupabaseService
 {
-    private readonly Supabase.SupabaseClient _client;
+    private readonly SupabaseClient _client;
 
-    public SupabaseService(Supabase.SupabaseSettings settings)
+    public SupabaseService(SupabaseSettings settings)
     {
-        _client = new Supabase.SupabaseClient(settings);
+        _client = new SupabaseClient(settings);
     }
 
     /// <summary>

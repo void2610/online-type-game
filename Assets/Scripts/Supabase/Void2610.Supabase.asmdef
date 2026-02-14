@@ -1,14 +1,10 @@
 {
-  "name": "OnlineTypeGame",
-  "rootNamespace": "",
+  "name": "Void2610.Supabase",
+  "rootNamespace": "Void2610.Supabase",
   "references": [
-    "Void2610.ThockKit",
-    "Void2610.Supabase",
-    "R3.Unity",
-    "VContainer",
     "UniTask",
-    "Unity.InputSystem",
-    "Unity.TextMeshPro"
+    "R3.Unity",
+    "Unity.Nuget.Newtonsoft-Json"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],

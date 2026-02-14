@@ -1,6 +1,7 @@
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
+using Void2610.Supabase;
 
 /// <summary>
 /// アプリケーション全体で共有するDIコンテナ。
@@ -8,7 +9,7 @@ using VContainer.Unity;
 /// </summary>
 public class RootLifetimeScope : LifetimeScope
 {
-    [SerializeField] private Supabase.SupabaseSettings supabaseSettings;
+    [SerializeField] private SupabaseSettings supabaseSettings;
 
     protected override void Configure(IContainerBuilder builder)
     {
