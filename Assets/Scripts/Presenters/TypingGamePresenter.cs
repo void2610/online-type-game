@@ -17,6 +17,8 @@ public class TypingGamePresenter : ITickable, IStartable, IDisposable
     private readonly TypingGameView _typingView;
     private readonly RankingView _rankingView;
     private readonly SupabaseService _supabase;
+    private readonly PlayerNameModel _playerNameModel;
+    private readonly PlayerNameInputView _playerNameInputView;
     private readonly CompositeDisposable _disposables = new();
     private readonly Queue<char> _inputBuffer = new();
 
@@ -29,12 +31,16 @@ public class TypingGamePresenter : ITickable, IStartable, IDisposable
         ITypingSession session,
         TypingGameView typingView,
         RankingView rankingView,
-        SupabaseService supabase)
+        SupabaseService supabase,
+        PlayerNameModel playerNameModel,
+        PlayerNameInputView playerNameInputView)
     {
         _session = session;
         _typingView = typingView;
         _rankingView = rankingView;
         _supabase = supabase;
+        _playerNameModel = playerNameModel;
+        _playerNameInputView = playerNameInputView;
 
         // セッションイベントの購読
         _session.CurrentQuestion.Subscribe(OnQuestionChanged).AddTo(_disposables);
@@ -138,7 +144,8 @@ public class TypingGamePresenter : ITickable, IStartable, IDisposable
         // スコア送信
         try
         {
-            await _supabase.SubmitScoreAsync("Player", score, accuracy);
+            var playerName = _playerNameModel.PlayerName.CurrentValue;
+            await _supabase.SubmitScoreAsync(playerName, score, accuracy);
             var ranking = await _supabase.FetchRankingAsync();
             _rankingView.SetRanking(ranking);
             _typingView.SetMessage(
@@ -186,6 +193,11 @@ public class TypingGamePresenter : ITickable, IStartable, IDisposable
     private async UniTask WaitForAnyKeyAsync()
     {
         _typingView.SetMessage("Press any key to start");
+
+        // プレイヤー名入力パネルが閉じるまで待機
+        await UniTask.WaitUntil(() => !_playerNameInputView.gameObject.activeSelf);
+
+        // キー入力を待機
         await UniTask.WaitUntil(() => Input.anyKeyDown);
     }
 
