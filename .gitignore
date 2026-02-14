@@ -75,3 +75,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 /Assets/Packages
 /.uloop/outputs
+
+# Supabase接続情報（秘匿）
+Assets/Settings/SupabaseSettings.asset
+Assets/Settings/SupabaseSettings.asset.meta

@@ -1,0 +1,21 @@
+{
+  "name": "OnlineTypeGame",
+  "rootNamespace": "",
+  "references": [
+    "Void2610.ThockKit",
+    "R3.Unity",
+    "VContainer",
+    "UniTask",
+    "Unity.InputSystem",
+    "Unity.TextMeshPro"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
