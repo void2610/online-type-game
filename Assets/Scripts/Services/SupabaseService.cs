@@ -14,7 +14,11 @@ public class SupabaseService
 
     public SupabaseService(string url, string key)
     {
-        var options = new SupabaseOptions { AutoConnectRealtime = false };
+        var options = new SupabaseOptions
+        {
+            AutoConnectRealtime = false,
+            AutoRefreshToken = true,
+        };
         _client = new Client(url, key, options);
     }
 

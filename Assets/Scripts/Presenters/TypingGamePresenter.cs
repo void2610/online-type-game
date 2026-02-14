@@ -175,8 +175,9 @@ public class TypingGamePresenter : ITickable, IStartable, IDisposable
     {
         var total = _correctCount + _missCount;
         var accuracy = total > 0 ? (float)_correctCount / total : 1f;
+        var displayIndex = Mathf.Min(_currentQuestionIndex + 1, _questionCount);
         _typingView.SetStatus(
-            $"Q{_currentQuestionIndex + 1}/{_questionCount}  Accuracy: {accuracy:P0}");
+            $"Q{displayIndex}/{_questionCount}  Accuracy: {accuracy:P0}");
     }
 
     /// <summary>

@@ -1,0 +1,13 @@
+<linker>
+  <!-- Supabase関連アセンブリのストリップ防止 -->
+  <assembly fullname="Supabase" preserve="all"/>
+  <assembly fullname="Supabase.Gotrue" preserve="all"/>
+  <assembly fullname="Supabase.Postgrest" preserve="all"/>
+  <assembly fullname="Supabase.Realtime" preserve="all"/>
+  <assembly fullname="Supabase.Core" preserve="all"/>
+  <assembly fullname="Supabase.Storage" preserve="all"/>
+  <assembly fullname="Supabase.Functions" preserve="all"/>
+  <assembly fullname="System.Reactive" preserve="all"/>
+  <assembly fullname="Websocket.Client" preserve="all"/>
+  <assembly fullname="Newtonsoft.Json" preserve="all"/>
+</linker>
