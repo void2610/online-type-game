@@ -1,30 +1,39 @@
-using Supabase.Postgrest.Attributes;
-using Supabase.Postgrest.Models;
+using System;
+using Newtonsoft.Json;
 
 /// <summary>
 /// ランキングテーブルの1行を表すモデル
 /// </summary>
-[Table("rankings")]
-public class RankingEntry : BaseModel
+[Serializable]
+public class RankingEntry
 {
     /// <summary>
-    /// 自動生成されるID（INSERT時は送信しない）
+    /// 自動生成されるID
     /// </summary>
-    [PrimaryKey("id")]
+    [JsonProperty("id")]
     public long Id { get; set; }
 
-    [Column("player_name")]
+    /// <summary>
+    /// プレイヤー名
+    /// </summary>
+    [JsonProperty("player_name")]
     public string PlayerName { get; set; }
 
-    [Column("score")]
+    /// <summary>
+    /// スコア
+    /// </summary>
+    [JsonProperty("score")]
     public int Score { get; set; }
 
-    [Column("accuracy")]
+    /// <summary>
+    /// 精度
+    /// </summary>
+    [JsonProperty("accuracy")]
     public float Accuracy { get; set; }
 
     /// <summary>
-    /// DB側で自動設定されるタイムスタンプ（INSERT時は送信しない）
+    /// DB側で自動設定されるタイムスタンプ
     /// </summary>
-    [Column("created_at", ignoreOnInsert: true, ignoreOnUpdate: true)]
+    [JsonProperty("created_at")]
     public string CreatedAt { get; set; }
 }

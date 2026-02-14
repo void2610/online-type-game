@@ -8,13 +8,14 @@ using VContainer.Unity;
 /// </summary>
 public class RootLifetimeScope : LifetimeScope
 {
-    [SerializeField] private SupabaseSettings supabaseSettings;
+    [SerializeField] private Supabase.SupabaseSettings supabaseSettings;
 
     protected override void Configure(IContainerBuilder builder)
     {
+        // SupabaseSettingsを登録
+        builder.RegisterInstance(supabaseSettings);
+
         // Supabaseサービスをシングルトンで登録
-        builder.Register<SupabaseService>(Lifetime.Singleton)
-            .WithParameter("url", supabaseSettings.Url)
-            .WithParameter("key", supabaseSettings.AnonKey);
+        builder.Register<SupabaseService>(Lifetime.Singleton);
     }
 }

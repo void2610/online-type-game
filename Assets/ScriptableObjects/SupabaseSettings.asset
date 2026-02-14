@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e049b3765dfd462694ede18301f8033, type: 3}
+  m_Name: SupabaseSettings
+  m_EditorClassIdentifier: 
+  url: https://oytktfwdskvdnsjncyyj.supabase.co
+  anonKey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im95dGt0Zndkc2t2ZG5zam5jeXlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEwNTk2OTYsImV4cCI6MjA4NjYzNTY5Nn0.T0sosA7dVjx0wVm-4Jv2-fzyJQu294N5OM8t-6hGZ68

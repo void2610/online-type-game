@@ -1,35 +1,16 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Cysharp.Threading.Tasks;
-using Supabase;
 
 /// <summary>
 /// Supabaseとの通信を担当するサービス
 /// </summary>
 public class SupabaseService
 {
-    private readonly Client _client;
-    private bool _initialized;
+    private readonly Supabase.SupabaseClient _client;
 
-    public SupabaseService(string url, string key)
+    public SupabaseService(Supabase.SupabaseSettings settings)
     {
-        var options = new SupabaseOptions
-        {
-            AutoConnectRealtime = false,
-            AutoRefreshToken = true,
-        };
-        _client = new Client(url, key, options);
-    }
-
-    /// <summary>
-    /// クライアントを初期化する
-    /// </summary>
-    public async UniTask InitializeAsync()
-    {
-        if (_initialized) return;
-        await _client.InitializeAsync();
-        _initialized = true;
+        _client = new Supabase.SupabaseClient(settings);
     }
 
     /// <summary>
@@ -37,14 +18,14 @@ public class SupabaseService
     /// </summary>
     public async UniTask SubmitScoreAsync(string playerName, int score, float accuracy)
     {
-        await InitializeAsync();
-        var entry = new RankingEntry
+        var entry = new
         {
-            PlayerName = playerName,
-            Score = score,
-            Accuracy = accuracy,
+            player_name = playerName,
+            score = score,
+            accuracy = accuracy
         };
-        await _client.From<RankingEntry>().Insert(entry);
+
+        await _client.Db.From<RankingEntry>("rankings").InsertAsync(entry);
     }
 
     /// <summary>
@@ -52,11 +33,10 @@ public class SupabaseService
     /// </summary>
     public async UniTask<List<RankingEntry>> FetchRankingAsync(int limit = 10)
     {
-        await InitializeAsync();
-        var response = await _client.From<RankingEntry>()
-            .Order("score", Supabase.Postgrest.Constants.Ordering.Descending)
+        return await _client.Db.From<RankingEntry>("rankings")
+            .Select("*")
+            .Order("score", false)
             .Limit(limit)
-            .Get();
-        return response.Models;
+            .ExecuteAsync();
     }
 }
