@@ -1,0 +1,20 @@
+{
+    "name": "Void2610.ThockKit.Samples.BasicEnglishTyping",
+    "rootNamespace": "Void2610.ThockKit.Samples.BasicEnglishTyping",
+    "references": [
+        "Void2610.ThockKit",
+        "R3.Unity",
+        "VContainer",
+        "Unity.InputSystem",
+        "UniTask"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

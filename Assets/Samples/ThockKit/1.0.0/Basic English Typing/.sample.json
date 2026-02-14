@@ -1,0 +1,5 @@
+{
+  "displayName": "Basic English Typing",
+  "description": "A basic English typing game sample using ThockKit. Shows how to implement a simple typing practice with minimal dependencies.",
+  "createSeparatePackage": false
+}
