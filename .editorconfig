@@ -1,0 +1,40 @@
+root = true
+
+# 全ファイル共通
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# C# ファイル
+[*.cs]
+indent_size = 4
+
+# Void2610.Unity.Analyzers ルール設定
+dotnet_diagnostic.VUA0001.severity = warning  # SerializeFieldフィールドの防御的nullチェック禁止
+dotnet_diagnostic.VUA0002.severity = warning  # SerializeFieldフィールドの_プレフィックス禁止
+dotnet_diagnostic.VUA0003.severity = warning  # C#標準イベント/デリゲート禁止（R3のSubject<T>を使用）
+dotnet_diagnostic.VUA0004.severity = warning  # 単一文publicメソッドに式本体(=>)を使用
+dotnet_diagnostic.VUA0005.severity = warning  # クラスメンバーの宣言順序を強制
+dotnet_diagnostic.VUA0006.severity = warning  # トップレベルenumメンバーにsummaryコメント必須
+dotnet_diagnostic.VUA0007.severity = warning  # MotionHandle.TryCancel()を使用
+dotnet_diagnostic.VUA0008.severity = warning  # privateフィールドに_プレフィックス必須
+
+# JSON ファイル
+[*.json]
+indent_size = 2
+
+# YAML ファイル
+[*.{yml,yaml}]
+indent_size = 2
+
+# XML / csproj / asmdef
+[*.{xml,csproj,asmdef}]
+indent_size = 2
+
+# Shader ファイル
+[*.{shader,hlsl,cginc}]
+indent_size = 4
