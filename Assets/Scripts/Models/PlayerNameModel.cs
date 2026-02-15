@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerNameModel
 {
     private const string PlayerNameKey = "PlayerName";
+    private const string HasSetNameKey = "HasSetPlayerName";
     private const string DefaultPlayerName = "Player";
 
     private readonly ReactiveProperty<string> _playerName = new();
@@ -15,6 +16,11 @@ public class PlayerNameModel
     /// プレイヤー名
     /// </summary>
     public ReadOnlyReactiveProperty<string> PlayerName => _playerName;
+
+    /// <summary>
+    /// プレイヤー名が一度でも設定されたことがあるか
+    /// </summary>
+    public bool HasSetName => PlayerPrefs.GetInt(HasSetNameKey, 0) == 1;
 
     /// <summary>
     /// コンストラクタ
