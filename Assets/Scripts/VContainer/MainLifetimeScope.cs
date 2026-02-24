@@ -13,6 +13,7 @@ public class MainLifetimeScope : LifetimeScope
     [SerializeField] private TypingGameView typingGameView;
     [SerializeField] private RankingView rankingView;
     [SerializeField] private PlayerNameInputView playerNameInputView;
+    [SerializeField] private TypingEffectView typingEffectView;
 
     protected override void Configure(IContainerBuilder builder)
     {
@@ -26,6 +27,7 @@ public class MainLifetimeScope : LifetimeScope
         builder.RegisterComponent(typingGameView);
         builder.RegisterComponent(rankingView);
         builder.RegisterComponent(playerNameInputView);
+        builder.RegisterComponent(typingEffectView);
 
         // Presenter
         builder.RegisterEntryPoint<PlayerNameInputPresenter>();

@@ -19,6 +19,7 @@ public class TypingGamePresenter : ITickable, IStartable, IDisposable
     private readonly SupabaseService _supabase;
     private readonly PlayerNameModel _playerNameModel;
     private readonly PlayerNameInputView _playerNameInputView;
+    private readonly TypingEffectView _effectView;
     private readonly CompositeDisposable _disposables = new();
     private readonly Queue<char> _inputBuffer = new();
 
@@ -33,7 +34,8 @@ public class TypingGamePresenter : ITickable, IStartable, IDisposable
         RankingView rankingView,
         SupabaseService supabase,
         PlayerNameModel playerNameModel,
-        PlayerNameInputView playerNameInputView)
+        PlayerNameInputView playerNameInputView,
+        TypingEffectView effectView)
     {
         _session = session;
         _typingView = typingView;
@@ -41,6 +43,7 @@ public class TypingGamePresenter : ITickable, IStartable, IDisposable
         _supabase = supabase;
         _playerNameModel = playerNameModel;
         _playerNameInputView = playerNameInputView;
+        _effectView = effectView;
 
         // セッションイベントの購読
         _session.CurrentQuestion.Subscribe(OnQuestionChanged).AddTo(_disposables);
@@ -124,9 +127,14 @@ public class TypingGamePresenter : ITickable, IStartable, IDisposable
     {
         if (result.IsIgnored) return;
         if (result.IsCorrect)
+        {
             _correctCount++;
+        }
         else
+        {
             _missCount++;
+            _effectView.PlayMissFlash();
+        }
 
         UpdateDisplay();
         UpdateStatus();
