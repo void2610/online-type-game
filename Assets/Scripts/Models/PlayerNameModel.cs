@@ -46,6 +46,7 @@ public class PlayerNameModel
 
         // PlayerPrefsに保存
         PlayerPrefs.SetString(PlayerNameKey, name);
+        PlayerPrefs.SetInt(HasSetNameKey, 1);
         PlayerPrefs.Save();
     }
 }

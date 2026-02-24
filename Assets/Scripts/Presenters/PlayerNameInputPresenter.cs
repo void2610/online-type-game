@@ -34,10 +34,8 @@ public class PlayerNameInputPresenter : IStartable, IDisposable
             })
             .AddTo(_disposables);
 
-        // プレイヤー名がデフォルト値の場合のみ表示
-        var currentName = _model.PlayerName.CurrentValue;
-        var isDefaultName = string.IsNullOrWhiteSpace(currentName) || currentName == "Player";
-        _view.SetActive(isDefaultName);
+        // プレイヤー名が未設定の場合のみ表示
+        _view.SetActive(!_model.HasSetName);
     }
 
     public void Dispose()
