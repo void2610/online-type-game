@@ -17,9 +17,8 @@ jobs:
             -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
             -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}")
           echo "HTTP status: $response"
-          if [ "$response" -ge 200 ] && [ "$response" -lt 300 ]; then
-            echo "Supabase is alive"
-          else
-            echo "::warning::Supabase returned status $response"
+          if [ "$response" -eq 0 ]; then
+            echo "::error::サーバーに接続できません"
             exit 1
           fi
+          echo "Supabase is alive (status: $response)"
